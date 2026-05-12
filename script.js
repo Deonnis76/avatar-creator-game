@@ -1307,7 +1307,9 @@ function finalizeLastMessage(text, div) {
     var PROXY = "/.netlify/functions/ai-proxy";
     fetch(PROXY, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+            'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
             model: 'claude-haiku-4-5-20251001',
             max_tokens: 80,
@@ -1404,7 +1406,7 @@ window.sendContactForm = function() {
 
 function callAI(history, systemPrompt, callback) {
     // Запросы идут через прокси — ключ скрыт на сервере
-    var PROXY = "https://avatar-proxy.rusbelopt1.workers.dev";
+    var PROXY = "/.netlify/functions/ai-proxy";
 
     var messages = history.length > 0 ? history.slice() : [{role:'user', content:'Начни сессию.'}];
 
